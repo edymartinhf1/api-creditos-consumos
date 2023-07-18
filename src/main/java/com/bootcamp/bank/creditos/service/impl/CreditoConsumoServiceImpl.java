@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +45,7 @@ public class CreditoConsumoServiceImpl implements CreditoConsumoService {
     }
 
 
-    Function<CargoConsumoDao,CargoConsumoDao> asignarValoresCargo = car -> {
+    UnaryOperator<CargoConsumoDao> asignarValoresCargo = car -> {
         LocalDateTime fecha = LocalDateTime.now();
         car.setFechaConsumo(fecha);
 
