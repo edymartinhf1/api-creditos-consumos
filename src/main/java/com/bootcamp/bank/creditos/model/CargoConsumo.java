@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class CargoConsumo {
     private String idCliente;
     private String numeroCredito;
+    private String numeroTarjetaCredito;
     private LocalDateTime fechaConsumo;
     private String fechaConsumoT;
     private Double importe;

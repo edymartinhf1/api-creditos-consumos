@@ -74,6 +74,18 @@ public class CreditoConsumoController {
                 .map(this::fromCargoConsumoDaoToCargoConsumoDto);
     }
 
+
+    @GetMapping("/movimiento/cliente/{idCliente}/credito/{numeroTarjetacredito}")
+    public Flux<CargoConsumo> findmovsByIdClienteAndNumeroTarjetaCredito(
+            @PathVariable(name = "idCliente") String idCliente,
+            @PathVariable(name = "numeroTarjetacredito") String numeroTarjetacredito
+    ) {
+        log.info("peticion idCliente:"+idCliente+" numeroTarjetaDebito:"+numeroTarjetacredito);
+        return creditoConsumoService.findMovsByIdClienteAndNumeroTarjetaCredito(idCliente,numeroTarjetacredito)
+                .map(this::fromCargoConsumoDaoToCargoConsumoDto);
+
+    }
+
     private CargoConsumo fromCargoConsumoDaoToCargoConsumoDto(CargoConsumoDao cargoConsumoDao) {
         CargoConsumo cargoConsumo = new CargoConsumo();
         BeanUtils.copyProperties(cargoConsumoDao, cargoConsumo);

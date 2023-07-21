@@ -15,5 +15,6 @@ public class CargoConsumoDao {
     private String numeroCredito;
     private LocalDateTime fechaConsumo;
     private String fechaConsumoT;
+    private String numeroTarjetaCredito;
     private Double importe;
 }

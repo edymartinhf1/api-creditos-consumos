@@ -13,4 +13,6 @@ public interface CreditoConsumoService {
     Flux<CargoConsumoDao> findByNumeroCredito(String numeroCredito);
 
     Flux<CargoConsumoDao> findCargosByNumeroCreditoAndBetweenDates(String numeroCredito,String fechaInicial, String fechaFinal);
+
+    Flux<CargoConsumoDao> findMovsByIdClienteAndNumeroTarjetaCredito(String idCliente, String numeroTarjetaCredito);
 }

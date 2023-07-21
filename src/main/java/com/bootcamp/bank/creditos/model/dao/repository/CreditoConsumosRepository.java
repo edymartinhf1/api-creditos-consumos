@@ -18,5 +18,7 @@ public interface CreditoConsumosRepository extends ReactiveMongoRepository<Cargo
 
     Flux<CargoConsumoDao> findByNumeroCreditoAndFechaConsumoBetween(String numeroCuenta, LocalDateTime fechaInicial, LocalDateTime fechaFinal);
 
+    Flux<CargoConsumoDao> findByIdClienteAndNumeroTarjetaCredito(String idCliente,String numeroTarjetaCredito);
+
 
 }

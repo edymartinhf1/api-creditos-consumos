@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
-import java.util.function.Function;
+import java.util.Comparator;
 import java.util.function.UnaryOperator;
 
 @Service
@@ -44,11 +44,16 @@ public class CreditoConsumoServiceImpl implements CreditoConsumoService {
         return creditoConsumosRepository.findByNumeroCreditoAndFechaConsumoBetween(numeroCredito,fecInicial,fecFinal);
     }
 
+    @Override
+    public Flux<CargoConsumoDao> findMovsByIdClienteAndNumeroTarjetaCredito(String idCliente, String numeroTarjetaCredito) {
+        return creditoConsumosRepository.findByIdClienteAndNumeroTarjetaCredito(idCliente,numeroTarjetaCredito)
+                .sort(Comparator.comparing(CargoConsumoDao::getFechaConsumo));
+    }
+
 
     UnaryOperator<CargoConsumoDao> asignarValoresCargo = car -> {
         LocalDateTime fecha = LocalDateTime.now();
         car.setFechaConsumo(fecha);
-
         car.setFechaConsumoT(Util.getCurrentDateAsString("dd/MM/yyyy"));
         return car;
     };
