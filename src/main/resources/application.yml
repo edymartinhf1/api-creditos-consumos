@@ -1,0 +1,12 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: api-creditos-consumos
+eureka:
+  client:
+    registry-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    enabled: true
